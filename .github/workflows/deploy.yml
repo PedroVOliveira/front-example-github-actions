@@ -1,0 +1,20 @@
+name: Deploy (Production)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy (production)
+    # Neste repositório de exemplo chamamos o workflow reutilizável localmente.
+    # Em um cenário com vários projetos, apontamos para um repositório central:
+    # uses: sua-org/git-workflow/.github/workflows/fly-deploy.yml@main
+    uses: ./.github/workflows/fly-deploy.yml
+    with:
+      app_name: front-example-github-actions
+    secrets:
+      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      APP_ENV: ${{ secrets.APP_ENV }}
+      API_URL: ${{ secrets.API_URL }}

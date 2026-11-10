@@ -1,0 +1,39 @@
+name: Reusable — Fly.io Deploy
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        description: "Nome da aplicação no Fly.io"
+        required: true
+        type: string
+    secrets:
+      FLY_API_TOKEN:
+        required: true
+      APP_ENV:
+        required: true
+      API_URL:
+        required: true
+
+jobs:
+  deploy:
+    name: Build & Deploy on Fly.io
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código-fonte
+        uses: actions/checkout@v4
+
+      - name: Configurar Flyctl CLI
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy do container no Fly.io
+        run: |
+          flyctl apps create "${{ inputs.app_name }}" || true
+          flyctl deploy \
+            --remote-only \
+            --env APP_ENV="${{ secrets.APP_ENV }}" \
+            --env API_URL="${{ secrets.API_URL }}"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
