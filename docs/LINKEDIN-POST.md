@@ -184,7 +184,7 @@ primary_region = 'gru'
 ```
 
 #### Explicação linha a linha do `fly.toml`:
-- **`app = 'front-example-actions-pedro'`**: Nome único da sua aplicação dentro do Fly.io.
+- **`app = 'front-example-actions-pedro'`**: Nome único da sua aplicação dentro do Fly.io *(Curiosidade prática: o filtro anti-phishing do Fly.io bloqueia nomes que contenham a palavra `github`, por isso tiramos o `github` do nome do app no `fly.toml`!)*.
 - **`primary_region = 'gru'`**: Define que o servidor rodará no datacenter de **São Paulo (Guarulhos)**, garantindo baixíssima latência no Brasil.
 - **`[build] dockerfile = 'Dockerfile'`**: Instrui o Fly.io a usar exatamente o nosso `Dockerfile` multi-stage que criamos no Passo 3.
 - **`internal_port = 3000`**: Conecta o tráfego externo à porta `3000` que expusemos no final do nosso `Dockerfile`.
