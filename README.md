@@ -4,6 +4,8 @@ Este repositório é um tutorial prático e público de referência sobre como e
 
 Todo o passo a passo abaixo foi desenhado explicando **linha por linha** cada arquivo de configuração (e com links para as documentações oficiais) para que você possa utilizar este mesmo fluxo nos seus projetos pessoais e profissionais.
 
+🌐 **Aplicação rodando ao vivo no Fly.io:** https://front-example-actions-pedro.fly.dev/
+
 ---
 
 ## Sumário
@@ -282,6 +284,11 @@ jobs:
     steps:
       - name: Checkout do código-fonte
         uses: actions/checkout@v4
+
+      - name: Criar arquivo .env a partir das Secrets
+        run: |
+          echo "APP_ENV=${{ secrets.APP_ENV }}" >> .env
+          echo "API_URL=${{ secrets.API_URL }}" >> .env
 
       - name: Configurar Flyctl CLI
         uses: superfly/flyctl-actions/setup-flyctl@master

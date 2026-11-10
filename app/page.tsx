@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 export default function Home() {
-  const apiUrl = process.env.API_URL ?? "Não definida (usando fallback local)";
-  const appEnv = process.env.APP_ENV ?? "development";
+  const apiUrl = process.env.API_URL;
+  const appEnv = process.env.APP_ENV;
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">

@@ -19,6 +19,7 @@ Automatizar o ciclo de build e entrega da sua aplicação não precisa ser uma c
 Neste artigo, preparei um **tutorial passo a passo — explicando linha por linha** — utilizando um repositório público em **Next.js** como lastro para você acompanhar, clonar e aplicar hoje mesmo.
 
 🔗 **Repositório público do projeto:** https://github.com/PedroVOliveira/front-example-github-actions
+🌐 **Demo ao vivo (deployada via GitHub Actions no Fly.io):** https://front-example-actions-pedro.fly.dev/
 
 ---
 
@@ -288,6 +289,11 @@ jobs:
     steps:
       - name: Checkout do código-fonte
         uses: actions/checkout@v4
+
+      - name: Criar arquivo .env a partir das Secrets
+        run: |
+          echo "APP_ENV=${{ secrets.APP_ENV }}" >> .env
+          echo "API_URL=${{ secrets.API_URL }}" >> .env
 
       - name: Configurar Flyctl CLI
         uses: superfly/flyctl-actions/setup-flyctl@master
