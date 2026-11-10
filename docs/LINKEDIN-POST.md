@@ -163,7 +163,7 @@ Para colocar nosso container Server-Side no ar de forma prática, utilizamos o *
 Na raiz do repositório, adicionamos o arquivo **`fly.toml`**, que diz ao Fly.io como construir e rodar nossa aplicação:
 
 ```toml
-app = 'front-example-github-actions'
+app = 'front-example-actions-pedro'
 primary_region = 'gru'
 
 [build]
@@ -184,7 +184,7 @@ primary_region = 'gru'
 ```
 
 #### Explicação linha a linha do `fly.toml`:
-- **`app = 'front-example-github-actions'`**: Nome único da sua aplicação dentro do Fly.io.
+- **`app = 'front-example-actions-pedro'`**: Nome único da sua aplicação dentro do Fly.io.
 - **`primary_region = 'gru'`**: Define que o servidor rodará no datacenter de **São Paulo (Guarulhos)**, garantindo baixíssima latência no Brasil.
 - **`[build] dockerfile = 'Dockerfile'`**: Instrui o Fly.io a usar exatamente o nosso `Dockerfile` multi-stage que criamos no Passo 3.
 - **`internal_port = 3000`**: Conecta o tráfego externo à porta `3000` que expusemos no final do nosso `Dockerfile`.
@@ -243,7 +243,7 @@ jobs:
     name: Deploy (production)
     uses: ./.github/workflows/fly-deploy.yml
     with:
-      app_name: front-example-github-actions
+      app_name: front-example-actions-pedro
     secrets:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       APP_ENV: ${{ secrets.APP_ENV }}

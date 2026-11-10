@@ -13,7 +13,7 @@ jobs:
     # uses: sua-org/git-workflow/.github/workflows/fly-deploy.yml@main
     uses: ./.github/workflows/fly-deploy.yml
     with:
-      app_name: front-example-github-actions
+      app_name: front-example-actions-pedro
     secrets:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       APP_ENV: ${{ secrets.APP_ENV }}

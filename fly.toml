@@ -1,4 +1,4 @@
-app = 'front-example-github-actions'
+app = 'front-example-actions-pedro'
 primary_region = 'gru'
 
 [build]

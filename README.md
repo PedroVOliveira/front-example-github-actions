@@ -163,7 +163,7 @@ Para hospedar nosso container Server-Side, utilizamos o **Fly.io**, que executa 
 ### 4.2. Explicação linha a linha do [`fly.toml`](./fly.toml)
 
 ```toml
-app = 'front-example-github-actions'
+app = 'front-example-actions-pedro'
 primary_region = 'gru'
 
 [build]
@@ -183,7 +183,7 @@ primary_region = 'gru'
   cpus = 1
 ```
 
-- **`app = 'front-example-github-actions'`**: Nome identificador da sua aplicação no Fly.io.
+- **`app = 'front-example-actions-pedro'`**: Nome identificador da sua aplicação no Fly.io *(Nota: o filtro anti-phishing do Fly.io bloqueia nomes de apps que contenham a palavra `github`, por isso usamos `front-example-actions-pedro`)*.
 - **`primary_region = 'gru'`**: Define a região principal como **São Paulo (Guarulhos)**.
 - **`[build] dockerfile = 'Dockerfile'`**: Aponta para o nosso `Dockerfile` na raiz do repositório.
 - **`internal_port = 3000`**: Direciona o tráfego para a porta `3000` exposta pelo nosso container Next.js.
@@ -240,7 +240,7 @@ jobs:
     name: Deploy (production)
     uses: ./.github/workflows/fly-deploy.yml
     with:
-      app_name: front-example-github-actions
+      app_name: front-example-actions-pedro
     secrets:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       APP_ENV: ${{ secrets.APP_ENV }}
